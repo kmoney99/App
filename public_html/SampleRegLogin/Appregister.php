@@ -1,4 +1,11 @@
 <form method="POST">
+	
+	<label for="name">Name
+	<input type="name" id="name" name="name" autocomplete="off" />
+	</label>
+	<label for="Lname"> Last Name
+	<input type="Lname" id="Lname" name="Lname" autocomplete="off" />
+	</label>
 	<label for="email">Email
 	<input type="email" id="email" name="email" autocomplete="off" />
 	</label>
@@ -9,6 +16,7 @@
 	<input type="password" id="cp" name="cpassword"/>
 	</label>
 	<input type="submit" name="register" value="Register"/>
+	
 </form>
 
 <?php
@@ -16,10 +24,12 @@
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
 if(isset($_POST["register"])){
-	if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"])){
+	if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["Lname"])){
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
+		$name = $_POST["name"];
+		$Lname = $_POST["Lname"];
 		if($password == $cpassword){
 			//echo "<div>Passwords Match</div>";
 			require("config.php");
@@ -37,7 +47,7 @@ if(isset($_POST["register"])){
 					echo var_export($e, true);
 				}
 				else{
-					echo "<div>Successfully registered!</div>";
+					echo "<div>You Have Successfully registered!</div>";
 				}
 			}
 			catch (Exception $e){
@@ -45,7 +55,7 @@ if(isset($_POST["register"])){
 			}
 		}
 		else{
-			echo "<div>Passwords don't match</div>";
+			echo "<div>Password don't match, Please Enter the password agian!</div>";
 		}
 	}
 }
